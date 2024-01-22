@@ -2,7 +2,6 @@
 //  AppDelegate.swift
 //  testUI
 //
-//  Created by AleksandraKashanova on 20.09.2023.
 //
 
 import UIKit

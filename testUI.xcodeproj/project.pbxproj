@@ -10,20 +10,22 @@
 		1BFB9B0F2ABB0F6700804B9A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BFB9B0E2ABB0F6700804B9A /* AppDelegate.swift */; };
 		1BFB9B112ABB0F6700804B9A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BFB9B102ABB0F6700804B9A /* SceneDelegate.swift */; };
 		1BFB9B132ABB0F6700804B9A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BFB9B122ABB0F6700804B9A /* ViewController.swift */; };
-		1BFB9B162ABB0F6700804B9A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1BFB9B142ABB0F6700804B9A /* Main.storyboard */; };
 		1BFB9B182ABB0F6A00804B9A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1BFB9B172ABB0F6A00804B9A /* Assets.xcassets */; };
 		1BFB9B1B2ABB0F6A00804B9A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1BFB9B192ABB0F6A00804B9A /* LaunchScreen.storyboard */; };
+		802331B043D4B2D62BA4A55A /* Pods_testUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01EF36040B9C85703DC1827E /* Pods_testUI.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		01EF36040B9C85703DC1827E /* Pods_testUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_testUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		10321D842774A9A5495AA857 /* Pods-testUI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-testUI.release.xcconfig"; path = "Target Support Files/Pods-testUI/Pods-testUI.release.xcconfig"; sourceTree = "<group>"; };
 		1BFB9B0B2ABB0F6700804B9A /* testUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = testUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1BFB9B0E2ABB0F6700804B9A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1BFB9B102ABB0F6700804B9A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		1BFB9B122ABB0F6700804B9A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		1BFB9B152ABB0F6700804B9A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1BFB9B172ABB0F6A00804B9A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1BFB9B1A2ABB0F6A00804B9A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1BFB9B1C2ABB0F6A00804B9A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5AF5E8D85314971CF9F41793 /* Pods-testUI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-testUI.debug.xcconfig"; path = "Target Support Files/Pods-testUI/Pods-testUI.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +33,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				802331B043D4B2D62BA4A55A /* Pods_testUI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +45,8 @@
 			children = (
 				1BFB9B0D2ABB0F6700804B9A /* testUI */,
 				1BFB9B0C2ABB0F6700804B9A /* Products */,
+				221BBDAB4C3F4EFF1FEF26C5 /* Pods */,
+				7AFB4F0FA6D6EF72AE77B914 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -59,12 +64,29 @@
 				1BFB9B0E2ABB0F6700804B9A /* AppDelegate.swift */,
 				1BFB9B102ABB0F6700804B9A /* SceneDelegate.swift */,
 				1BFB9B122ABB0F6700804B9A /* ViewController.swift */,
-				1BFB9B142ABB0F6700804B9A /* Main.storyboard */,
 				1BFB9B172ABB0F6A00804B9A /* Assets.xcassets */,
 				1BFB9B192ABB0F6A00804B9A /* LaunchScreen.storyboard */,
 				1BFB9B1C2ABB0F6A00804B9A /* Info.plist */,
 			);
 			path = testUI;
+			sourceTree = "<group>";
+		};
+		221BBDAB4C3F4EFF1FEF26C5 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				5AF5E8D85314971CF9F41793 /* Pods-testUI.debug.xcconfig */,
+				10321D842774A9A5495AA857 /* Pods-testUI.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		7AFB4F0FA6D6EF72AE77B914 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				01EF36040B9C85703DC1827E /* Pods_testUI.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,9 +96,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1BFB9B1F2ABB0F6A00804B9A /* Build configuration list for PBXNativeTarget "testUI" */;
 			buildPhases = (
+				3E7295D2D84DB04CE6095D2C /* [CP] Check Pods Manifest.lock */,
 				1BFB9B072ABB0F6700804B9A /* Sources */,
 				1BFB9B082ABB0F6700804B9A /* Frameworks */,
 				1BFB9B092ABB0F6700804B9A /* Resources */,
+				C1C41D7CE9AAC2CCE4FED90D /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -127,11 +151,52 @@
 			files = (
 				1BFB9B1B2ABB0F6A00804B9A /* LaunchScreen.storyboard in Resources */,
 				1BFB9B182ABB0F6A00804B9A /* Assets.xcassets in Resources */,
-				1BFB9B162ABB0F6700804B9A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		3E7295D2D84DB04CE6095D2C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-testUI-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C1C41D7CE9AAC2CCE4FED90D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-testUI/Pods-testUI-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-testUI/Pods-testUI-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-testUI/Pods-testUI-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		1BFB9B072ABB0F6700804B9A /* Sources */ = {
@@ -147,14 +212,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		1BFB9B142ABB0F6700804B9A /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				1BFB9B152ABB0F6700804B9A /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		1BFB9B192ABB0F6A00804B9A /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -282,6 +339,7 @@
 		};
 		1BFB9B202ABB0F6A00804B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5AF5E8D85314971CF9F41793 /* Pods-testUI.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -291,7 +349,6 @@
 				INFOPLIST_FILE = testUI/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -309,6 +366,7 @@
 		};
 		1BFB9B212ABB0F6A00804B9A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 10321D842774A9A5495AA857 /* Pods-testUI.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -318,7 +376,6 @@
 				INFOPLIST_FILE = testUI/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
