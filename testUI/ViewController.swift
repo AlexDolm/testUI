@@ -1,90 +1,153 @@
 
-
 import UIKit
 import SnapKit
 
-class ViewController: UIViewController {
-    
-    private func setShades(count: Int) {
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate {
 
-            var previousSizes = 8
-            var lastAddedView: UIView? = nil
-        for imageURL in 0...count {
-                let imageView = UIImageView()
-                imageView.layer.borderWidth = 4
-                imageView.layer.cornerRadius = 25
-            
-                imageView.clipsToBounds = true
-                imageView.layer.borderColor = UIColor.black.cgColor
-                imageView.isUserInteractionEnabled = true
-                imageView.image = UIImage(named: "ggg")
+    let tableView = UITableView()
 
-                if let lastView = lastAddedView {
-                    view.insertSubview(imageView, belowSubview: lastView)
-                } else {
-                    view.addSubview(imageView)
-                }
 
-                imageView.snp.makeConstraints { make in
-                    make.trailing.equalToSuperview().inset(previousSizes)
-                    make.bottom.equalTo(view.snp.bottom).inset(200)
-                    make.size.equalTo(50)
-                }
+    enum CellType {
+        case text(String)
+        case input(String, String)
+    }
 
-                previousSizes += 25
-                lastAddedView = imageView
-            }
-        }
+    var data: [CellType] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Mixed Cells"
+        view.backgroundColor = .white
 
+        // Заполнение данными
+        for i in 1...20 {
+            data.append(.text("Static Text \(i)"))
+        }
+        data.append(.input("Name", "Enter your name"))
+        data.append(.input("Email", "Enter your email"))
 
-        let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
-        backgroundImage.image = UIImage(named: "background")
-        backgroundImage.contentMode = .scaleAspectFill
-        view.addSubview(backgroundImage)
-        view.sendSubviewToBack(backgroundImage)
-        
-        setShades(count: 3)
+        // Настройка таблицы
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.register(TextCell.self, forCellReuseIdentifier: "TextCell")
+        tableView.register(InputCell.self, forCellReuseIdentifier: "InputCell")
 
+        view.addSubview(tableView)
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(keyboardWillShow(notification:)),
+            name: UIResponder.keyboardWillShowNotification,
+            object: nil
+        )
 
-//        let circleSize: CGFloat = 100
-//        let borderWidth: CGFloat = 4
-//        let circleSpacing: CGFloat = 30
-//
-//        var previousCircleView: UIImageView?
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(keyboardWillHide(notification:)),
+            name: UIResponder.keyboardWillHideNotification,
+            object: nil
+        )
 
-//        for i in 0..<3 {
-//            let circleImageView = UIImageView()
-//            circleImageView.image = UIImage(named: "ggg")
-//            circleImageView.contentMode = .scaleAspectFill
-//            view.addSubview(circleImageView)
-//
-//            let maskLayer = CAShapeLayer()
-//            let circlePath = UIBezierPath(ovalIn: CGRect(x: 0, y: 0, width: circleSize, height: circleSize))
-//            let borderPath = UIBezierPath(ovalIn: CGRect(x: -borderWidth, y: -borderWidth, width: circleSize + 2 * borderWidth, height: circleSize + 2 * borderWidth))
-//            borderPath.append(circlePath)
-//            borderPath.usesEvenOddFillRule = true
-//
-//            maskLayer.path = borderPath.cgPath
-//            maskLayer.fillRule = .evenOdd
-//            circleImageView.layer.mask = maskLayer
-//
-//            circleImageView.snp.makeConstraints { make in
-//                make.width.height.equalTo(circleSize + 2 * borderWidth)
-//                make.centerY.equalToSuperview()
-//
-//                if let previous = previousCircleView {
-//                    make.left.equalTo(previous.snp.right).offset(-(circleSize - circleSpacing + borderWidth))
-//                } else {
-//                    make.left.equalToSuperview().offset(20)
-//                }
-//            }
-//
-//            previousCircleView = circleImageView
-//        }
+        setupConstraints()
+    }
+
+    private func setupConstraints() {
+        tableView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+    }
+
+    @objc private func keyboardWillShow(notification: Notification) {
+        guard let userInfo = notification.userInfo,
+              let keyboardFrame = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect else {
+            return
+        }
+
+        let keyboardHeight = keyboardFrame.height
+        tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardHeight, right: 0)
+    }
+
+    @objc private func keyboardWillHide(notification: Notification) {
+        tableView.contentInset = .zero
+    }
+
+    // MARK: - UITableViewDataSource
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return data.count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let item = data[indexPath.row]
+
+        switch item {
+        case .text(let text):
+            let cell = tableView.dequeueReusableCell(withIdentifier: "TextCell", for: indexPath) as! TextCell
+            cell.configure(with: text)
+            return cell
+        case .input(let title, let placeholder):
+            let cell = tableView.dequeueReusableCell(withIdentifier: "InputCell", for: indexPath) as! InputCell
+            cell.configure(with: title, placeholder: placeholder)
+            return cell
+        }
+    }
+
+    // MARK: - UITableViewDelegate
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
 
+// MARK: - TextCell
 
+class TextCell: UITableViewCell {
+    func configure(with text: String) {
+        textLabel?.text = text
+        textLabel?.font = UIFont.systemFont(ofSize: 16)
+    }
+}
+// MARK: - InputCell
+class InputCell: UITableViewCell, UITextFieldDelegate {
+
+    private let titleLabel = UILabel()
+    private let textField = UITextField()
+
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+
+        titleLabel.font = UIFont.systemFont(ofSize: 16)
+        textField.borderStyle = .roundedRect
+
+        contentView.addSubview(titleLabel)
+        contentView.addSubview(textField)
+
+        // Установка делегата
+        textField.delegate = self
+
+        setupConstraints()
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    private func setupConstraints() {
+        titleLabel.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(8)
+            make.leading.equalToSuperview().offset(16)
+            make.trailing.equalToSuperview().offset(-16)
+        }
+
+        textField.snp.makeConstraints { make in
+            make.top.equalTo(titleLabel.snp.bottom).offset(8)
+            make.leading.equalToSuperview().offset(16)
+            make.trailing.equalToSuperview().offset(-16)
+            make.bottom.equalToSuperview().offset(-8)
+        }
+    }
+
+    func configure(with title: String, placeholder: String) {
+        titleLabel.text = title
+        textField.placeholder = placeholder
+    }
+}
